@@ -11,7 +11,7 @@ function BalanceCard() {
           variant="ghost"
           size="icon"
           aria-label="More options"
-          className="bg-transparent"
+          className="bg-transparent hover:bg-primary/25 rounded-md"
         >
           <DotsIcon />
         </Button>

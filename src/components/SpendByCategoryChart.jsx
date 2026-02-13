@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Chart from "react-apexcharts";
 import Card from "../shared/Card";
 import { DotsIcon } from "../shared/Icons";
@@ -13,41 +13,65 @@ const categories = [
   { name: "Production Tools", amount: 1000, color: "#1e40af" },
 ];
 
+const totalAmount = categories.reduce((sum, cat) => sum + cat.amount, 0);
+
 function SpendByCategoryChart() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const chartContainerRef = useRef(null);
   const series = useMemo(() => categories.map((c) => c.amount), []);
+
+  useEffect(() => {
+    if (chartContainerRef.current && hoveredIndex !== null) {
+      const paths = chartContainerRef.current.querySelectorAll(
+        ".apexcharts-donut-series path"
+      );
+      paths.forEach((path, index) => {
+        if (index === hoveredIndex) {
+          path.style.opacity = "1";
+        } else {
+          path.style.opacity = "0.3";
+        }
+      });
+    } else if (chartContainerRef.current) {
+      const paths = chartContainerRef.current.querySelectorAll(
+        ".apexcharts-donut-series path"
+      );
+      paths.forEach((path) => {
+        path.style.opacity = "1";
+      });
+    }
+  }, [hoveredIndex]);
 
   const options = useMemo(
     () => ({
       chart: {
         type: "donut",
         fontFamily: "inherit",
+        events: {
+          dataPointMouseEnter(_, __, config) {
+            setHoveredIndex(config.dataPointIndex);
+          },
+          dataPointMouseLeave() {
+            setHoveredIndex(null);
+          },
+        },
       },
       colors: categories.map((c) => c.color),
       labels: categories.map((c) => c.name),
       legend: { show: false },
       dataLabels: { enabled: false },
-      stroke: { width: 0 },
+      stroke: {
+        width: 3,
+        colors: ["#ffffff"],
+      },
       plotOptions: {
         pie: {
+          borderRadius: 8,
+          borderRadiusApplication: "end",
           donut: {
             size: "70%",
             labels: {
-              show: true,
-              name: { show: false },
-              value: {
-                show: true,
-                fontSize: "18px",
-                fontWeight: 700,
-                color: "#1a202c",
-                formatter: () => "Overall Spending",
-              },
-              total: {
-                show: true,
-                label: "$19,760.00",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "#596780",
-              },
+              show: false,
             },
           },
         },
@@ -56,11 +80,28 @@ function SpendByCategoryChart() {
         y: { formatter: (val) => `$${val?.toLocaleString() ?? 0}` },
       },
       states: {
-        hover: { filter: { type: "darken", value: 0.08 } },
+        hover: {
+          filter: {
+            type: "darken",
+            value: hoveredIndex !== null ? 0.5 : 0.08,
+          },
+        },
+        active: {
+          filter: {
+            type: "none",
+          },
+        },
       },
     }),
-    []
+    [hoveredIndex]
   );
+
+  const displayCategory =
+    hoveredIndex !== null ? categories[hoveredIndex] : null;
+  const displayLabel = displayCategory
+    ? displayCategory.name
+    : "Overall Spending";
+  const displayAmount = displayCategory ? displayCategory.amount : totalAmount;
 
   return (
     <Card>
@@ -68,18 +109,32 @@ function SpendByCategoryChart() {
         <h3 className="text-base font-semibold text-dark-gray">
           Spend by category
         </h3>
+
         <Button
           variant="ghost"
           size="icon"
           aria-label="More options"
-          className="bg-transparent"
+          className="bg-transparent hover:bg-primary/25 rounded-md"
         >
           <DotsIcon />
         </Button>
       </div>
       <div className="flex flex-col lg:items-center lg:gap-10">
-        <div className="w-full max-w-[220px] mx-auto lg:mx-0 lg:shrink-0">
+        <div
+          ref={chartContainerRef}
+          className="w-full max-w-[220px] mx-auto lg:mx-0 lg:shrink-0 relative [&_.apexcharts-donut-series_path]:transition-opacity [&_.apexcharts-donut-series_path]:duration-300"
+        >
           <Chart options={options} series={series} type="donut" height={220} />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="text-center">
+              <p className="text-sm font-medium mb-1 text-gray-50">
+                {displayLabel}
+              </p>
+              <h4 className="text-2xl font-bold text-dark-gray">
+                ${displayAmount.toLocaleString()}.00
+              </h4>
+            </div>
+          </div>
         </div>
         <ul className="mt-10 lg:mt-0 flex-1 w-full space-y-[17px]">
           {categories.map((cat) => (

@@ -210,7 +210,7 @@ function Sidebar({ isCollapsed, onToggle }) {
                 })}
                 <li>
                   <div
-                    className={`flex items-center  py-3.5 px-4 rounded-[10px] text-lg gap-3.5 leading-normal text-gray-50 ${
+                    className={`flex items-center  py-3.5 px-4 rounded-[10px] text-lg leading-normal text-gray-50 ${
                       isCollapsed ? "px-3 py-2 md:p-0!" : "px-4 py-3.5"
                     }`}
                   >
@@ -220,7 +220,7 @@ function Sidebar({ isCollapsed, onToggle }) {
                       }`}
                     />
                     <span
-                      className={`font-medium ${
+                      className={`font-medium ml-3.5 ${
                         isCollapsed ? "block md:hidden" : "block"
                       }`}
                     >
@@ -236,13 +236,13 @@ function Sidebar({ isCollapsed, onToggle }) {
                       }`}
                       aria-label="Toggle dark mode"
                     >
-                      <div className="relative z-10 h-[26px] w-[26px] flex items-center justify-center">
+                      <div className="relative z-10 h-[26px] w-[26px] flex items-center justify-center shrink-0">
                         <SunIcon
                           size={18}
                           color={isDark ? "#1A202C" : "white"}
                         />
                       </div>
-                      <div className="relative z-10 h-[26px] w-[26px] flex items-center justify-center">
+                      <div className="relative z-10 h-[26px] w-[26px] flex items-center justify-center shrink-0">
                         <MoonIcon
                           size={15}
                           color={isDark ? "white" : "#1A202C"}
@@ -252,7 +252,7 @@ function Sidebar({ isCollapsed, onToggle }) {
                         className={`w-[27px] h-[27px] rounded-full bg-primary absolute transition-all duration-300 z-0 ${
                           isCollapsed
                             ? isDark
-                              ? "top-1 md:top-[38px] left-[38px]"
+                              ? "top-1 md:top-[38px] left-1"
                               : "top-1 left-1"
                             : isDark
                             ? "left-[38px] top-1/2 -translate-y-1/2"
@@ -267,7 +267,7 @@ function Sidebar({ isCollapsed, onToggle }) {
           </nav>
           <Link
             to="/logout"
-            className={`flex items-center gap-3.5 font-medium rounded-[10px] text-lg leading-normal transition-colors text-gray-50 hover:text-primary mt-auto overflow-hidden ${
+            className={`flex items-center gap-3.5 font-medium rounded-[10px] text-lg leading-normal transition-colors text-gray-50 hover:text-primary hover:bg-background mt-auto overflow-hidden ${
               isCollapsed ? "px-3 py-2" : "px-4 py-3.5"
             }`}
           >

@@ -64,7 +64,7 @@ function Header({ onToggle }) {
               <BellIcon size={20} />
               <span className="absolute right-px top-px h-2.5 w-2.5 rounded-full bg-danger"></span>
             </Button>
-            <div className="absolute right-0 top-full w-[400px] pt-3 z-50 group-hover:opacity-100 group-hover:visible opacity-0 invisible duration-300 translate-y-4 group-hover:translate-y-0">
+            <div className="absolute md:right-auto -right-1/2 md:left-1/2 md:-translate-x-1/2 top-full sm:w-[400px] w-[350px] pt-3 z-50 group-hover:opacity-100 group-hover:visible opacity-0 invisible duration-300 translate-y-4 group-hover:translate-y-0">
               <div className=" bg-white border border-gray-200 rounded-[10px] shadow-lg ">
                 <div className="px-4 py-3 border-b border-gray-200">
                   <h3 className="text-base font-semibold text-dark-gray">

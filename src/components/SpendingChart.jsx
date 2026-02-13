@@ -176,14 +176,18 @@ function SpendingChart() {
           <Button
             variant="ghost"
             aria-label="Previous year"
-            className="rounded-md"
+            className="rounded-md hover:bg-primary/25"
           >
             <LeftArrowIcon size={12} />
           </Button>
           <span className="text-sm font-semibold text-dark-gray text-center">
             2024
           </span>
-          <Button variant="ghost" aria-label="Next year" className="rounded-md">
+          <Button
+            variant="ghost"
+            aria-label="Next year"
+            className="rounded-md hover:bg-primary/25"
+          >
             <RightArrowIcon size={12} />
           </Button>
         </div>
