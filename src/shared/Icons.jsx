@@ -402,7 +402,7 @@ export const SettingIcon = ({ size = 22, color = "currentColor", ...rest }) => {
   );
 };
 
-export const BagIcon = ({ size = 22, color = "currentColor" }) => {
+export const BagIcon = ({ size = 22, color = "currentColor", ...rest }) => {
   return (
     <svg
       width={size}
@@ -410,6 +410,7 @@ export const BagIcon = ({ size = 22, color = "currentColor" }) => {
       viewBox="0 0 22 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <path
         d="M7.33334 20.1667H14.6667C18.3517 20.1667 19.0117 18.6908 19.2042 16.8942L19.8917 9.56083C20.1392 7.32417 19.4975 5.5 15.5833 5.5H6.41667C2.5025 5.5 1.86084 7.32417 2.10834 9.56083L2.79584 16.8942C2.98834 18.6908 3.64834 20.1667 7.33334 20.1667Z"
@@ -1139,6 +1140,40 @@ export const FigmaIcon = ({ size = 36, ...rest }) => {
           />
         </clipPath>
       </defs>
+    </svg>
+  );
+};
+
+export const MenuIcon = ({ size, color = "currentColor", ...rest }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <g id="Menu / Menu_Alt_03">
+          {" "}
+          <path
+            id="Vector"
+            d="M5 17H13M5 12H19M5 7H13"
+            stroke={color}
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>{" "}
+        </g>{" "}
+      </g>
     </svg>
   );
 };

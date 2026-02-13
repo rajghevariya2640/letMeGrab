@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { BellIcon, ChevronDownIcon, SearchIcon } from "./Icons";
+import { BellIcon, ChevronDownIcon, MenuIcon, SearchIcon } from "./Icons";
 import Input from "./Input";
 import UserAvatar from "../assets/image/png/user.png";
 import Button from "./Button";
@@ -17,7 +17,7 @@ const profileMenuItems = [
   { id: 4, label: "Log Out" },
 ];
 
-function Header() {
+function Header({ onToggle }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
 
@@ -37,16 +37,24 @@ function Header() {
     };
   }, [isProfileOpen]);
   return (
-    <header className="py-[18px] px-8 bg-white border-b border-gray-200 sticky top-0 left-0 right-0 z-10">
-      <div className="flex items-center justify-between gap-6">
-        <div className="w-full max-w-[400px] relative">
-          <SearchIcon className="absolute top-1/2 -translate-y-1/2 left-6" />
+    <header className="py-3 md:py-[18px] px-4 md:px-8 bg-white border-b border-gray-200 sticky top-0 left-0 right-0 z-10">
+      <div className="flex items-center justify-between gap-4 lg:gap-6">
+        <Button
+          onClick={onToggle}
+          variant="link"
+          className="p-0! w-8 h-8 block md:hidden"
+        >
+          <MenuIcon />
+        </Button>
+        <div className="w-full max-w-[300px] xl:max-w-[400px] relative md:block hidden">
+          <SearchIcon className="absolute top-1/2 -translate-y-1/2 left-3 lg:left-6" />
           <Input
             placeholder="Search something here"
-            className="rounded-full ps-18"
+            className="rounded-full ps-10 lg:ps-18"
           />
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ml-auto">
+          <SearchIcon className="block md:hidden" />
           <div className="relative group">
             <Button
               type="button"
@@ -104,7 +112,7 @@ function Header() {
                   className="h-11 w-11 rounded-full object-cover"
                 />
               </div>
-              <span className="text-base font-semibold text-dark-gray">
+              <span className=" hidden md:block text-base font-semibold text-dark-gray">
                 John Cornors
               </span>
               <ChevronDownIcon

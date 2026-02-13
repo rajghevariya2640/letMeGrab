@@ -3,7 +3,7 @@ import { ArrowUpIcon, ArrowDownIcon } from "../shared/Icons";
 
 function IncomeExpenseCards() {
   return (
-    <Card className="flex  p-6">
+    <Card className="flex sm:flex-row flex-col  p-6">
       <div className="w-full">
         <div className="flex gap-2  justify-between">
           <h3 className="text-base font-semibold text-dark-gray">
@@ -13,9 +13,9 @@ function IncomeExpenseCards() {
             <ArrowUpIcon size={24} color="var(--color-success)" />
           </div>
         </div>
-        <p className="text-[32px] font-bold text-dark-gray mb-3.5 flex items-end gap-2.5">
+        <p className="text-2xl md:text-[32px] font-bold text-dark-gray mb-3.5 flex items-end gap-2.5">
           $50,530.00
-          <span className="text-sm font-semibold text-gray inline-block mb-2.5">
+          <span className="text-sm font-semibold text-gray inline-block mb-1.5 md:mb-2.5">
             (USD)
           </span>
         </p>
@@ -27,7 +27,7 @@ function IncomeExpenseCards() {
         </p>
       </div>
 
-      <span className="w-px h-full mx-6 bg-gray-300"></span>
+      <span className="h-px w-full sm:w-px sm:h-full my-4 sm:mx-6 bg-gray-300"></span>
 
       <div className="w-full">
         <div className="flex gap-2  justify-between">
@@ -38,9 +38,9 @@ function IncomeExpenseCards() {
             <ArrowDownIcon size={24} color="var(--color-success)" />
           </div>
         </div>
-        <p className="text-[32px] font-bold text-dark-gray mb-3.5 flex items-end gap-2.5">
+        <p className="text-2xl md:text-[32px] font-bold text-dark-gray mb-3.5 flex items-end gap-2.5">
           $19,760.00
-          <span className="text-sm font-semibold text-gray inline-block mb-2.5">
+          <span className="text-sm font-semibold text-gray inline-block mb-1.5 md:mb-2.5">
             (USD)
           </span>
         </p>

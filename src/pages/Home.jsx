@@ -7,13 +7,13 @@ import TransactionHistory from "../components/TransactionHistory";
 function Home() {
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        <div className="xl:col-span-2 flex flex-col gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 md:gap-6 gap-4">
+        <div className="xl:col-span-2 flex flex-col md:gap-6 gap-4">
           <SpendingChart />
           <IncomeExpenseCards />
           <TransactionHistory />
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:gap-6 gap-4">
           <BalanceCard />
           <SpendByCategoryChart />
         </div>

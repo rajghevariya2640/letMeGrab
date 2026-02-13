@@ -23,14 +23,14 @@ function BalanceCard() {
             (USD)
           </span>
         </p>
-        <p className="text-xs text-gray mb-10 font-semibold">
+        <p className="text-xs text-gray mb-4 md:mb-10 font-semibold">
           From Jan 01, 2022 to Jan 31, 2022
         </p>
         <div className="flex xl:flex-col 2xl:flex-row gap-4 3xl:gap-6 mt-auto">
           <Button
             variant="default"
             size="default"
-            className="flex items-center gap-3 px-2! w-full"
+            className="flex items-center gap-3 px-2! w-full "
           >
             <TopUpIcon size={24} />
             Top Up
@@ -38,7 +38,7 @@ function BalanceCard() {
           <Button
             variant="outline"
             size="default"
-            className="flex items-center gap- px-2!3 w-full"
+            className="flex items-center gap-3 px-2!3 w-full "
           >
             <TransferIcon />
             Transfer

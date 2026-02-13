@@ -62,7 +62,7 @@ function TransactionHistory() {
           <CalendarIcon size={18} />1 Jan - 1 Feb 2022
         </Button>
       </div>
-      <Table columns={columns}>
+      <Table columns={columns} className="min-w-[600px]">
         {transactions.map((tx) => {
           return (
             <tr key={tx.id} className="text-sm font-semibold text-dark-gray">

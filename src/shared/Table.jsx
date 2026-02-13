@@ -1,12 +1,18 @@
 import { RightArrowIcon } from "./Icons";
 
-const thClass = "py-2.5 px-2 lg:px-6 font-medium text-left text-gray text-xs";
+const thClass = "py-2.5 px-6 font-medium text-left text-gray text-xs";
 const headRowClass =
   "border-b border-t border-gray-200 text-left text-gray text-xs";
-function Table({ columns = [], children, className = "", ...props }) {
+function Table({
+  columns = [],
+  children,
+  className = "",
+  wrapperClassName = "",
+  ...props
+}) {
   return (
-    <div className={`overflow-x-auto -mx-4 lg:-mx-6 ${className}`.trim()}>
-      <table className="w-full common-table text-sm" {...props}>
+    <div className={`overflow-x-auto -mx-4 lg:-mx-6 ${wrapperClassName}`}>
+      <table className={`w-full common-table text-sm ${className}`} {...props}>
         <thead>
           <tr className={headRowClass}>
             {columns.map((col) => (
