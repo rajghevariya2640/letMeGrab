@@ -1,13 +1,82 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #40a198;
+  --color-background: #f6f7f9;
+  --color-gray: #90a3bf;
+  --color-gray-50: #596780;
+  --color-gray-100: #c3d4e9;
+  --color-gray-200: #f3f5f7;
+  --color-gray-300: #f0f0f0;
+  --color-dark-gray: #1a202c;
+  --color-dark-gray-50: #1c1e23;
+  --color-danger: #ff4423;
+  --color-danger-50: #db2719;
+  --color-success: #7fb519;
+  --color-success-50: #bce455;
+  --color-warning: #dba32a;
+
+  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1366px;
+  --breakpoint-3xl: 1440px;
+  --breakpoint-4xl: 1536px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  @apply bg-background font-plus-jakarta leading-normal;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  padding-right: 8px;
+  margin-right: -8px;
+  scrollbar-color: var(--color-gray-200) transparent;
+}
+
+.apexcharts-tooltip:has(.apexcharts-custom-tooltip) {
+  @apply !bg-transparent !border-0 !shadow-none !p-0;
+}
+.apexcharts-tooltip {
+  @apply !overflow-visible;
+}
+.apexcharts-tooltip.tooltip-arrow-left {
+  @apply mx-4;
+}
+.apexcharts-tooltip.tooltip-arrow-right {
+  @apply -ms-4;
+}
+
+.apexcharts-tooltip.apexcharts-active .apexcharts-custom-tooltip {
+  @apply flex flex-col items-center border-0 bg-transparent shadow-none;
+}
+
+.apexcharts-custom-tooltip-inner {
+  @apply flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 bg-dark-gray-50 text-white shadow-md;
+}
+
+.apexcharts-custom-tooltip-label {
+  @apply text-xs font-normal opacity-95;
+}
+
+.apexcharts-custom-tooltip-value {
+  @apply text-base font-bold;
+}
+
+.apexcharts-custom-tooltip-arrow {
+  @apply absolute left-0 top-1/2 z-[-1] h-4 w-4 -translate-y-1/2 rotate-45 rounded-bl-md bg-dark-gray-50;
+}
+
+.apexcharts-tooltip.tooltip-arrow-right .apexcharts-custom-tooltip-arrow {
+  @apply left-full -translate-x-full -translate-y-1/2 rounded-bl-none rounded-tr-md;
+}
+
+.common-table td {
+  @apply relative py-3.5 px-6 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-gray-200 first-of-type:after:left-[22px] last-of-type:after:right-[22px] last-of-type:after:left-[unset];
 }
